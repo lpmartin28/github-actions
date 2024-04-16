@@ -1,0 +1,11 @@
+name: 02 - Events
+on: push
+
+jobs:
+    job: 
+        runs-on : ubuntu-latest
+        steps:
+            - name: ShowTrigger
+              run: |
+                echo "Event name: ${{ github.event_name}}"
+    
