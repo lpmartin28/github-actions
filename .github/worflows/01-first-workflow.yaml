@@ -1,7 +1,7 @@
 name: 01 - First WorkFlow.
 on: 
-  push 
-  workflow_dispatch
+  - push  
+  - workflow_dispatch
   
 jobs:
   job1: 
@@ -12,10 +12,13 @@ jobs:
   job2:
     runs-on: ubuntu-latest
     steps:
-      - name: Multi-line bash
+      - name: Multilinea
         run: |
           echo "Fallo"
-          echo "a multi-line"
-          echo "script."
+          exit 1
+      - name: Paso exitoso
+        run: | 
+          echo "adios"
+          exit 0
       - name: Decir adios
-        run: echo "adios"    
+        run: echo "adios"
