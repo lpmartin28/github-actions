@@ -1,9 +1,9 @@
 name: 02 - Events
 on: 
-    schedule:
-        - cron: '6 * * * *'
+    #schedule:
+    #    - cron: '6 * * * *'
     #push:
-    #workflow_dispatch:
+    workflow_dispatch:
 
 jobs:
     job: 
