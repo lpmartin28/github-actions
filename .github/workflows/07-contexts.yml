@@ -1,5 +1,4 @@
 name: 07 Contexts
-
 on:
     push: 
     workflow_dispatch: 
@@ -18,4 +17,4 @@ jobs:
                 echo "ID de ejecución: ${{github.run_id}}"
                 echo "Número de ejecución: ${{github.run_number}}"
             - name: Retrieve variable
-              run: echo ${{vars.MY_VAR}}
+              run: echo "${{vars.MY_VAR}}"
