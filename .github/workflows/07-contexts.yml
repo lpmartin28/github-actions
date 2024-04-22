@@ -1,16 +1,22 @@
 name: 07 Contexts
 run-name: 07 - Contexts | DEBUG - ${{ inputs.debug }}
+env: 
+    MY_WORKFLOW_VAR: workflow
+    MY_OVERWRITTEN_VAR: workflow
 on:
-    #push: 
+    push: 
     workflow_dispatch: 
         inputs:
             debug:
-              description: 'Debug mode'
-              type: boolean           
-              default: false
+                description: 'Debug mode'
+                type: boolean           
+                default: false
         
 jobs:
-    echo:
+    echo-data:
+        env: 
+            MY_WORKFLOW_VAR: job
+            MY_OVERWRITTEN_VAR: job
         runs-on: ubuntu-latest
         steps:
             - name: Show info 
@@ -22,5 +28,19 @@ jobs:
                 echo "Flujo de trabajo: ${{github.workflow}}"
                 echo "ID de ejecución: ${{github.run_id}}"
                 echo "Número de ejecución: ${{github.run_number}}"
+
             - name: Retrieve variable
               run: echo "${{vars.MY_VAR}}"
+
+            - name: Print Env Variables
+              env: 
+                  MY_OVERWRITTEN_VAR: step
+              run: |
+                echo "Workflow env: ${{env.MY_WORKFLOW_VAR }}"
+                echo "overwritten env: ${{env.MY_OVERWRITTEN_VAR}}"
+            
+            - name: Print Env Variables
+              run: |
+                  echo "Workflow env: ${{env.MY_WORKFLOW_VAR }}"
+                  echo "overwritten env: ${{env.MY_OVERWRITTEN_VAR}}"
+            
