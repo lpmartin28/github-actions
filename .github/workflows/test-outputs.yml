@@ -1,0 +1,18 @@
+name: test outputs
+
+on: push
+
+jobs: 
+    welcome:
+        runs-on: ubuntu-latest
+        outputs:
+            variable1: "salida"
+        
+        steps:
+            - name: 
+              run: echo "welcome"
+    goodbye:
+        runs-on: ubuntu-latest
+        needs: welcome
+        steps:
+          - run: echo "Bye ${{needs.welcome.outputs.variable1}}"
